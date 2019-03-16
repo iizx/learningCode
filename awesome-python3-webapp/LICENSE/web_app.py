@@ -80,7 +80,7 @@ def execute(sql,args):
         return affected
 
 # 定义一个user类
-from orm import Model,IntegertField,StringField
+from orm import Model, IntegertField, StringField
 class user(Model):
     __table__ = 'users',
     id  = IntegertField(primary_key = True),
@@ -129,3 +129,44 @@ class Field(object):
 class String(Field):
     def __init__(self,name=None,primary_key=False,default=None,ddl='varchar(100)'):
         super().__init__(name,ddl,primary_key,default)
+# 定义元类Modelmataclass
+class ModelMetaclass(type):
+    def __new__(cls, name,bases,attrs):
+        # 排除Model类本身
+        if name == 'Model':
+            return type.__new__(cls,name,bases,attrs)
+        # 获取表名
+        tableName = attrs.get('__table__',None) or name
+        logging.info('found model:%s(table:%s)' %(name,tableName))
+        # 获取所有的Field和主键名
+        mappings = dict()
+        Field = []
+        primaryKey = None
+        for k,v in attrs.item():
+            if isinstance(v,Field):
+                logging.info('found mapping: %s ==> %s' %(k,v))
+                mappings[k] = v
+                if v.primaryKey:
+                    # 找到主键
+                    if primaryKey:
+                        raise RuntimeError('Duplicate primary key for field: %s' %k)
+                    primaryKey = k
+                else:
+                    Field.append(k)
+            if not primaryKey:
+                raise RuntimeError('PrimaryKey is not found.')
+            for k in mappings.keys():
+                attrs.pop(k)
+            escaped_fields = list(lambda f:'%s' % f,fields)
+            attrs['__mappings__'] = mappings # 保存属性和列的映射关系
+            attrs['__table__'] = tableName
+            attrs['__primary_key__'] = primaryKey# 主键属性名
+            attrs['__fields__'] = fields # 除主键外的属性名
+            # 构造默认的SELECT, INSERT, UPDATE和DELETE语句:
+            attrs['__select__'] = 'select `%s`, %s from `%s`' % (primaryKey, ', '.join(escaped_fields), tableName)
+            attrs['__insert__'] = 'insert into `%s` (%s, `%s`) values (%s)' % (
+            tableName, ', '.join(escaped_fields), primaryKey, create_args_string(len(escaped_fields) + 1))
+            attrs['__update__'] = 'update `%s` set %s where `%s`=?' % (
+            tableName, ', '.join(map(lambda f: '`%s`=?' % (mappings.get(f).name or f), fields)), primaryKey)
+            attrs['__delete__'] = 'delete from `%s` where `%s`=?' % (tableName, primaryKey)
+            return type.__new__(cls, name, bases, attrs)
