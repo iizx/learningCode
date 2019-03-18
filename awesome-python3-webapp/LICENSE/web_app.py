@@ -89,6 +89,22 @@ class user(Model):
 class Model(dict, metaclass=ModelMetaclass):
     def __init__(self,**kw):
         super(Model,self).__init__(**kw)
+
+    @classmethod
+    @asyncio.coroutine
+    def find(cls,pk):
+        # 通过主键查找
+        rs= yield from select('%s where "%s"=?' %(cls.__select__, cls.__primary_key__),[pk],1)
+        if len(rs) == 0:
+            return None
+        return cls(**rs[0])
+    @asyncio.coroutine
+    def save(self):
+        args = list(map(self.getValueOrDefault,self.__fields__))
+        args.append(self.getValueOrDefault(self.__primary_key__))
+        rows =yield from execute(self.__insert__,args)
+        if rows !=1:
+            logging.warn('failed to inserd record: affected rows: %s' %rows)
 # 定义一个获取属性的方法
 def __getattr__(self,key):
     try:
@@ -170,3 +186,4 @@ class ModelMetaclass(type):
             tableName, ', '.join(map(lambda f: '`%s`=?' % (mappings.get(f).name or f), fields)), primaryKey)
             attrs['__delete__'] = 'delete from `%s` where `%s`=?' % (tableName, primaryKey)
             return type.__new__(cls, name, bases, attrs)
+
