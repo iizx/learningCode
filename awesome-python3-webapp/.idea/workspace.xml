@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38f103b8-e14f-4d1c-adb1-45495a71b3dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE/web_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +14,14 @@
     <session id="-986617153">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="2" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.14" value="2" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="4" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -34,12 +36,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="809" />
+          <entry key="py" value="4770" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="809" />
+          <entry key="Python" value="4770" />
         </counts>
       </usages-collector>
     </session>
@@ -49,11 +51,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LICENSE/web_app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+            <state relative-caret-position="-2719">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
               <folding>
-                <marker date="1552400583920" expanded="true" signature="219:312" ph="..." />
-                <marker date="1552400583920" expanded="true" signature="363:368" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="219:312" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="363:368" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="868:873" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="1464:2010" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="2078:2083" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="2486:2491" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="2642:3292" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="2775:2784" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="3332:3337" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="3508:3513" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="3568:3573" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="3663:3668" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="4041:4046" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="4392:4397" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="4580:4585" ph="..." />
+                <marker date="1552918577972" expanded="true" signature="4620:4629" ph="..." />
               </folding>
             </state>
           </provider>
@@ -79,8 +95,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-30" />
+    <option name="y" value="1" />
     <option name="width" value="697" />
     <option name="height" value="744" />
   </component>
@@ -116,7 +132,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Programs/Python/Python36-32/python.exe" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -173,8 +189,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="753" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1580938" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.075642966" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -200,14 +217,43 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/LICENSE/web_app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        <state relative-caret-position="-2719">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
           <folding>
-            <marker date="1552400583920" expanded="true" signature="219:312" ph="..." />
-            <marker date="1552400583920" expanded="true" signature="363:368" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="219:312" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="363:368" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="868:873" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="1464:2010" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="2078:2083" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="2486:2491" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="2642:3292" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="2775:2784" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="3332:3337" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="3508:3513" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="3568:3573" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="3663:3668" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="4041:4046" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="4392:4397" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="4580:4585" ph="..." />
+            <marker date="1552918577972" expanded="true" signature="4620:4629" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
