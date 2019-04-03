@@ -9,7 +9,7 @@ class Alien(Sprite):
 		self.screen = screen
 		self.ai_settings = ai_settigs
 		# 获取图片外接矩形
-		self.image = pygame.image.load('./images/alien.bmp')
+		self.image = pygame.transform.scale(pygame.image.load('./images/alien.bmp'),(30,29))
 		self.rect = self.image.get_rect()
 		# 设置外星人位置
 		self.rect.x = self.rect.width
