@@ -8,7 +8,7 @@ class Settings():
 		self.bg_color = (230,230,230)
 		# 设置飞船初始速度
 		self.ship_speed_factor = 1.5
-		self.ship_limit = 3
+		self.ship_limit = 1
 
 		# 子弹设置
 		self.bullet_speed_factor = 3
@@ -19,6 +19,6 @@ class Settings():
 		# 外星人设置
 		self.alien_speed_factor = 1
 		# 向下移动速度
-		self.fleet_drop_speed = 10
+		self.fleet_drop_speed = 100
 		# 1向右移；-1向左移
 		self.fleet_direction = 1

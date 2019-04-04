@@ -6,6 +6,7 @@ import game_function as gf
 from pygame.sprite import Group
 from alien import Alien
 from game_stats import GameStats
+from button import Button
 
 def run_game():
 	# 初始化游戏
@@ -25,17 +26,19 @@ def run_game():
 	aliens = Group()
 	# 游戏信息初始化
 	stats = GameStats(ai_settings)
+	# 创建开始按钮
+	play_button = Button(ai_settings,screen,"Play")
 	# 创建外星人群
 	gf.create_aliens(screen, ai_settings, aliens, ship)
 	# 开始游戏循环
 	while True:
 
 		# 监视键盘和鼠标事件
-		gf.check_event(screen,ship,ai_settings,bullets)
+		gf.check_event(screen,ship,ai_settings,bullets,stats,play_button,aliens)
 		if stats.game_active:
 			ship.update()
 			gf.update_bullet(bullets,aliens,screen,ai_settings,ship)
 			gf.update_aliens(aliens,ai_settings,ship,bullets,screen,stats)
-		gf.update_screen(ai_settings,screen,ship,bullets,aliens)
+		gf.update_screen(ai_settings,screen,ship,bullets,aliens,play_button,stats)
 
 run_game()

@@ -23,17 +23,20 @@ def check_keyup_event(event,ship):
 	elif event.key == pygame.K_LEFT:
 		ship.moving_left = False
 
-def check_event(screen,ship,ai_setting,bullets):
+def check_event(screen,ship,ai_settings,bullets,stats,play_button,aliens):
 	"""响应按键和鼠标事件"""
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			sys.exit()
+		elif event.type == pygame.MOUSEBUTTONDOWN:
+			mouse_x,mouse_y = pygame.mouse.get_pos()
+			check_paly_button(mouse_x,mouse_y,stats,play_button,bullets,aliens,screen,ai_settings,ship)
 		elif event.type == pygame.KEYDOWN:
-			check_keydowm_event(event,screen,ship,ai_setting,bullets)
+			check_keydowm_event(event,screen,ship,ai_settings,bullets)
 		elif event.type == pygame.KEYUP:
 			check_keyup_event(event,ship)
 
-def update_screen(ai_settings,screen,ship,bullets,aliens):
+def update_screen(ai_settings,screen,ship,bullets,aliens,play_button,stats):
 	"""更新屏幕并切换图像"""
 	# 循环时重绘屏幕
 	screen.fill(ai_settings.bg_color)
@@ -41,6 +44,9 @@ def update_screen(ai_settings,screen,ship,bullets,aliens):
 	for bullet in bullets:
 		bullet.draw_bullet()
 	aliens.draw(screen)
+	# 绘制开始按钮
+	if not stats.game_active:
+		play_button.draw_button()
 	# 让新绘制的屏幕可见
 	pygame.display.flip()
 
@@ -123,3 +129,16 @@ def check_alien_bottom(aliens,screen,ship,ai_settings,bullets,stats):
 		if alien.rect.bottom >= screen_rect.bottom:
 			ship_hit(ship, aliens, ai_settings, bullets, screen, stats)
 			break
+
+def check_paly_button(mouse_x,mouse_y,stats,play_button,bullets,aliens,screen,ai_settings,ship):
+	"""检测鼠标点击位置"""
+	if play_button.rect.collidepoint(mouse_x,mouse_y):
+		stats.reset_stats()
+		stats.game_active = True
+		# 清空子弹和外星人
+		bullets.empty()
+		aliens.empty()
+
+		# 重设外星人并将飞船居中
+		create_aliens(screen,ai_settings,aliens,ship)
+		ship.center_ship()
