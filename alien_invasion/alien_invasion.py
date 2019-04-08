@@ -1,4 +1,4 @@
-import sys
+
 import pygame
 from settings import Settings
 from ship import Ship
@@ -7,6 +7,7 @@ from pygame.sprite import Group
 from alien import Alien
 from game_stats import GameStats
 from button import Button
+from scoreboard import ScoreBoard as sb
 
 def run_game():
 	# 初始化游戏
@@ -26,6 +27,8 @@ def run_game():
 	aliens = Group()
 	# 游戏信息初始化
 	stats = GameStats(ai_settings)
+	# 分数初始化
+	score = sb(ai_settings,screen,stats)
 	# 创建开始按钮
 	play_button = Button(ai_settings,screen,"Play")
 	# 创建外星人群
@@ -34,11 +37,11 @@ def run_game():
 	while True:
 
 		# 监视键盘和鼠标事件
-		gf.check_event(screen,ship,ai_settings,bullets,stats,play_button,aliens)
+		gf.check_event(screen,ship,ai_settings,bullets,stats,play_button,aliens,score)
 		if stats.game_active:
 			ship.update()
-			gf.update_bullet(bullets,aliens,screen,ai_settings,ship)
-			gf.update_aliens(aliens,ai_settings,ship,bullets,screen,stats)
-		gf.update_screen(ai_settings,screen,ship,bullets,aliens,play_button,stats)
+			gf.update_bullet(bullets,aliens,screen,ai_settings,ship,stats,score)
+			gf.update_aliens(aliens,ai_settings,ship,bullets,screen,stats,score)
+		gf.update_screen(ai_settings,screen,ship,bullets,aliens,play_button,stats,score)
 
 run_game()

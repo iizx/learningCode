@@ -1,12 +1,16 @@
 import pygame
-class Ship():
+from pygame.sprite import Sprite
+
+class Ship(Sprite):
 	"""飞船管理模块"""
 	def __init__(self,screen,ai_settings):
+		# 导入sprite模块并初始化
+		super().__init__()
 		"""初始化飞船并设置其初始位置"""
 		self.screen = screen
 		self.ai_settings = ai_settings
 		# 加载飞船并获取其外接矩形
-		self.image = pygame.image.load('images/ship.bmp')
+		self.image = pygame.transform.scale(pygame.image.load('images/ship.bmp'),(30,24))
 		self.rect = self.image.get_rect()
 		# 获取屏幕外接矩形
 		self.screen_rect = screen.get_rect()
