@@ -11,13 +11,13 @@ class Settings():
 
 		# 子弹设置
 
-		self.bullet_width = 3000
+		self.bullet_width = 3
 		self.bullet_height = 15
 		self.bullet_color = (60,60,60)
 		self.bullets_allowed = 3
 
 		# 向下移动速度
-		self.fleet_drop_speed = 100
+		self.fleet_drop_speed = 10
 		# 游戏节奏控制
 		self.speedup_scale = 1.1
 		# 动态属性初始化
