@@ -4,6 +4,8 @@ from bullet import Bullet
 from alien import Alien
 from time import sleep
 from random import randrange
+import json
+from string import punctuation
 
 def check_keydowm_event(event,screen,ship,ai_setting,bullets):
 	if event.key == pygame.K_RIGHT:
@@ -118,7 +120,6 @@ def ship_hit(ship, aliens, ai_settings, bullets, screen, stats,score):
 	if stats.left_ship > 0:
 		# 飞船数-1
 		stats.left_ship -= 1
-		print(stats.left_ship)
 		score.prep_ships()
 		# 清空子弹和外星人
 		bullets.empty()
@@ -127,15 +128,15 @@ def ship_hit(ship, aliens, ai_settings, bullets, screen, stats,score):
 		if stats.left_ship == 0:
 			stats.game_active = False
 			pygame.mouse.set_visible(True)
+			# 存储最高分
+			with open('high_score.json', 'w') as f:
+				json.dump('HIGH_SCORE:' + str(score.high_score_str), f)
 		# 重设外星人并将飞船居中
 		create_aliens(screen,ai_settings,aliens,ship)
 		ship.center_ship()
 
 		# 暂停
 		sleep(0.5)
-	else:
-		stats.game_active = False
-		pygame.mouse.set_visible(True)
 
 def check_alien_bottom(aliens,screen,ship,ai_settings,bullets,stats,score):
 	"""检查是否有外星人到达屏幕底端"""
@@ -167,6 +168,11 @@ def check_paly_button(mouse_x,mouse_y,stats,play_button,bullets,aliens,screen,ai
 		create_aliens(screen,ai_settings,aliens,ship)
 		ship.center_ship()
 def check_high_score(stats,score):
-	if stats.score > stats.high_score:
-		stats.high_score = stats.score
-		score.prep_high_score()
+	with open('high_score.json') as f:
+		high_score_int = int(json.load(f).split(':')[-1].replace(',',''))
+		if stats.score > high_score_int or stats.score > stats.high_score:
+			stats.high_score = stats.score
+			score.prep_high_score()
+		else:
+			stats.high_score = high_score_int
+			score.prep_high_score()

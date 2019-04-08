@@ -38,6 +38,7 @@ def run_game():
 
 		# 监视键盘和鼠标事件
 		gf.check_event(screen,ship,ai_settings,bullets,stats,play_button,aliens,score)
+		gf.check_high_score(stats,score)
 		if stats.game_active:
 			ship.update()
 			gf.update_bullet(bullets,aliens,screen,ai_settings,ship,stats,score)
